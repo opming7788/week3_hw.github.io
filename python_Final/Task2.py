@@ -51,13 +51,9 @@ def MyCrawler(url):
             # print(myhre)
             if title2.string==None:
                 title2.string="0"
-            mytitle.append([title.a.string,str(title2.string),crawlerTime(myhre)])
-            # mytitle.append(title.a.string+","+str(title2.string)+","+crawlerTime(myhre))
-            # print(crawlerTime(myhre))
-        else:
-            cleanText=title.string.strip()
-            mytitle.append([cleanText,"0",""])
-            # mytitle.append(cleanText+","+"0"+"")
+            mytitle.append([title.a.string,title2.string,crawlerTime(myhre)])
+            
+        
     pageURL=root.find("a",string="‹ 上頁")
     nextLink="https://www.ptt.cc"+pageURL["href"]
 
