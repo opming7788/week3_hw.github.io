@@ -1,0 +1,412 @@
+/* 重置樣式 */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/* 重制樣式 */
+
+.headcontainer {
+  display: flex;
+  font-size: 20px;
+}
+
+.Title {
+  flex: none;
+  display: flex;
+  align-items: center;
+  width: 50%;
+}
+
+.MenuItems {
+  display: flex;
+  justify-content: flex-end;
+  flex: none;
+  width: 50%;
+}
+.item {
+  flex: none;
+  width: 80px;
+
+  text-align: center;
+}
+.hamburger {
+  display: none;
+}
+
+.wellcome {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+  background-color: aqua;
+}
+.welcomeText {
+  display: flex;
+  text-align: center;
+  font-size: 40px;
+}
+.Maincontent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.picboxcontent {
+  width: 1200px;
+  display: block;
+  padding-top: 10px;
+  /* display: flex;
+  flex-direction: column; */
+  /* flex-direction: column;*/
+  /* justify-content: center;
+  align-items: center; */
+}
+.BoxsContainer {
+  display: grid;
+  /* background-color: rgb(61, 111, 219); */
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 50px 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "sBox1 sBox1 sBox2 sBox2 sBox3 sBox3 "
+    "BBox1 BBox1 BBox2 BBox3 BBox4 BBox5"
+    "BBox1 BBox1 BBox2 BBox3 BBox4 BBox5"
+    "BBox6 BBox6 BBox7 BBox8 BBox9 BBox10"
+    "BBox6 BBox6 BBox7 BBox8 BBox9 BBox10";
+  padding: 10px;
+  /* padding-top: 20px */
+  grid-gap: 20px;
+  font-size: 20px;
+}
+.sBox1 {
+  grid-area: sBox1;
+}
+.sBox2 {
+  grid-area: sBox2;
+}
+.sBox3 {
+  grid-area: sBox3;
+}
+
+.sBox1,
+.sBox2,
+.sBox3 {
+  align-items: center;
+  display: flex;
+  height: 50px;
+  flex: auto;
+  background-color: rgb(229, 229, 237);
+}
+.SmallBoxs_img {
+  height: 100%;
+}
+.SmallBoxs_img img {
+  width: 80px;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sBox1 p,
+.sBox2 p,
+.sBox3 p {
+  margin-left: 10px;
+}
+
+.BBox1,
+.BBox2,
+.BBox3,
+.BBox4,
+.BBox5,
+.BBox6,
+.BBox7,
+.BBox8,
+.BBox9,
+.BBox10 {
+  position: relative;
+  background-image: url("image1.jpg");
+  background-size: cover;
+  background-position: center;
+  /* line-height: 200px; */
+  height: 200px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.BBox1 {
+  grid-area: BBox1;
+}
+.BBox2 {
+  grid-area: BBox2;
+}
+.BBox3 {
+  grid-area: BBox3;
+}
+.BBox4 {
+  grid-area: BBox4;
+}
+.BBox5 {
+  grid-area: BBox5;
+}
+.BBox6 {
+  grid-area: BBox6;
+}
+.BBox7 {
+  grid-area: BBox7;
+}
+
+.BBox8 {
+  grid-area: BBox8;
+}
+.BBox9 {
+  grid-area: BBox9;
+}
+.BBox10 {
+  grid-area: BBox10;
+}
+.BigBoxtext {
+  width: 100%;
+  background-color: rgba(226, 232, 219, 0.7);
+  color: black;
+  text-align: center;
+  padding: 10px;
+
+  overflow: hidden; /* 隱藏溢出部分 */
+  white-space: nowrap; /* 不換行 */
+  text-overflow: ellipsis; /* 使用省略號表示被截斷的部分 */
+  box-sizing: border-box;
+
+  position: absolute;
+}
+.star-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.dropdown-content {
+  display: none;
+}
+
+.boxcontainer2 {
+  display: grid;
+  /* background-color: rgb(61, 111, 219); */
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "BBBox1 BBBox1 BBBox2 BBBox3 BBBox4 BBBox5"
+    "BBBox6 BBBox6 BBBox7 BBBox8 BBBox9 BBBox10";
+  padding: 10px;
+  grid-gap: 20px;
+  font-size: 20px;
+}
+
+.BBBox1,
+.BBBox2,
+.BBBox3,
+.BBBox4,
+.BBBox5,
+.BBBox6,
+.BBBox7,
+.BBBox8,
+.BBBox9,
+.BBBox10 {
+  height: 200px;
+  background-color: red;
+  position: relative;
+  background-image: url("image1.jpg");
+  background-size: cover;
+  background-position: center;
+  /* line-height: 200px; */
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.BBBox1 {
+  grid-area: BBBox1;
+}
+.BBBox2 {
+  grid-area: BBBox2;
+}
+.BBBox3 {
+  grid-area: BBBox3;
+}
+.BBBox4 {
+  grid-area: BBBox4;
+}
+.BBBox5 {
+  grid-area: BBBox5;
+}
+.BBBox6 {
+  grid-area: BBBox6;
+}
+.BBBox7 {
+  grid-area: BBBox7;
+}
+
+.BBBox8 {
+  grid-area: BBBox8;
+}
+.BBBox9 {
+  grid-area: BBBox9;
+}
+.BBBox10 {
+  grid-area: BBBox10;
+}
+
+.buttoncontainer {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.myLoad {
+  background-color: rgb(230, 225, 225);
+  width: 200px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.myLoad:hover {
+  background-color: red;
+  color: white;
+}
+
+@media (max-width: 1200px) {
+  .picboxcontent {
+    width: 90%;
+  }
+  .BoxsContainer {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 50px 50px 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      "sBox1 sBox1 sBox2 sBox2 "
+      "sBox3 sBox3 sBox3 sBox3 "
+      "BBox1 BBox2 BBox3 BBox4 "
+      "BBox1 BBox2 BBox3 BBox4 "
+      "BBox5 BBox6 BBox7 BBox8 "
+      "BBox5 BBox6 BBox7 BBox8 "
+      "BBox9 BBox9 BBox10 BBox10 "
+      "BBox9 BBox9 BBox10 BBox10";
+  }
+
+  .boxcontainer2 {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+      "BBBox1 BBBox2 BBBox3 BBBox4 "
+      "BBBox5 BBBox6 BBBox7 BBBox8 "
+      "BBBox9 BBBox9 BBBox10 BBBox10";
+  }
+}
+@media (max-width: 600px) {
+  .picboxcontent {
+    width: 90%;
+  }
+  .BoxsContainer {
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 50px 50px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      "sBox1" "sBox2" "sBox3" "BBox1" "BBox2" "BBox3"
+      "BBox4" "BBox5" "BBox6" "BBox7" "BBox8" "BBox9"
+      "BBox10";
+  }
+  .boxcontainer2 {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      "BBBox1" "BBBox2" "BBBox3" "BBBox4 "
+      "BBBox5" "BBBox6" "BBBox7" "BBBox8 "
+      "BBBox9" "BBBox10";
+  }
+
+  .item {
+    display: none;
+  }
+  .hamburger {
+    display: block;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 30px;
+  }
+}
+
+.dropdown-content {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  z-index: 2;
+}
+
+.dropdown-content.show {
+  display: block;
+}
+
+.dropdown-content .close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  color: black;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 20px;
+  color: black;
+  text-decoration: none;
+  text-align: center;
+}
+
+.dropdown-content a:hover {
+  background-color: rgba(234, 255, 0, 1);
+}

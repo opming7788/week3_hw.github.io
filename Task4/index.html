@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="headcontainer">
+      <div class="Title">
+        <div class="TitleText">My Website</div>
+      </div>
+      <div class="MenuItems">
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+        <div class="item">Item 4</div>
+        <button class="hamburger" id="hamburgerButton">&#9776;</button>
+        <!-- 下拉式分頁選單 -->
+        <div class="dropdown-content" id="menuDropdown">
+          <span class="close" id="closeButton">&times;</span>
+          <a href="#">Item 1</a>
+          <a href="#">Item 2</a>
+          <a href="#">Item 3</a>
+          <a href="#">Item 4</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="wellcome">
+      <div class="welcomeText">Wellcome to MyHome</div>
+    </div>
+    <div class="Maincontent">
+      <div class="picboxcontent">
+        <div class="BoxsContainer">
+          <div class="sBox1">
+            <div class="SmallBoxs_img">
+              <img src="image1.jpg" alt="Image" />
+            </div>
+
+            <p>Promotion 1</p>
+          </div>
+          <div class="sBox2">
+            <div class="SmallBoxs_img">
+              <img src="image1.jpg" alt="Image" />
+            </div>
+
+            <p>Promotion 2</p>
+          </div>
+          <div class="sBox3">
+            <div class="SmallBoxs_img">
+              <img src="image1.jpg" alt="Image" />
+            </div>
+
+            <p>Promotion 3</p>
+          </div>
+          <div class="BBox1">
+            <div class="star-icon">⭐</div>
+            <div class="BigBoxtext">Title 1</div>
+          </div>
+          <div class="BBox2">
+            <div class="star-icon">⭐</div>
+            <div class="BigBoxtext">Title 2</div>
+          </div>
+          <div class="BBox3">
+            <div class="star-icon">⭐</div>
+            <div class="BigBoxtext">Title 3</div>
+          </div>
+          <div class="BBox4">
+            <div class="star-icon">⭐</div>
+            <div class="BigBoxtext">Title 4</div>
+          </div>
+          <div class="BBox5">
+            <div class="star-icon">⭐</div>
+            <div class="BigBoxtext">Title 5</div>
+          </div>
+          <div class="BBox6">
+            <div class="star-icon">⭐</div>
+            <div class="BigBoxtext">Title 6</div>
+          </div>
+          <div class="BBox7">
+            <div class="star-icon">⭐</div>
+            <div class="BigBoxtext">Title 7</div>
+          </div>
+          <div class="BBox8">
+            <div class="star-icon">⭐</div>
+            <div class="BigBoxtext">Title 8</div>
+          </div>
+          <div class="BBox9">
+            <div class="star-icon">⭐</div>
+            <div class="BigBoxtext">Title 9</div>
+          </div>
+          <div class="BBox10">
+            <div class="star-icon">⭐</div>
+            <div class="BigBoxtext">Title 10</div>
+          </div>
+        </div>
+
+        <div class="buttoncontainer">
+          <div class="myLoad" onclick="changeColor()">Load More</div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+      let my_spot_img_map = [];
+      let LoadCount = 0;
+      function changeColor(clicked) {
+        LoadPic();
+      }
+
+      function LoadPic() {
+        var boxcontainer2 = document.createElement("div");
+        boxcontainer2.className = "boxcontainer2";
+        for (let i = 1; i <= 10; i++) {
+          var BBBox = document.createElement("div");
+          var star = document.createElement("div");
+          var BigBoxtext = document.createElement("div");
+          BBBox.className = "BBBox" + i;
+          star.className = "star-icon";
+          BigBoxtext.className = "BigBoxtext";
+          star.innerText = "⭐";
+
+          // BigBoxtext.innerText = "Title 1";
+          BBBox.appendChild(star);
+          BBBox.appendChild(BigBoxtext);
+          boxcontainer2.appendChild(BBBox);
+
+          BigBoxtext.innerText = my_spot_img_map[12 + 10 * LoadCount + i][0];
+          let targetUrl = my_spot_img_map[12 + 10 * LoadCount + i][1];
+
+          BBBox.style.backgroundImage = `url(${targetUrl})`;
+        }
+        Picboxcontent = document.querySelector(".picboxcontent");
+        var mybutton = document.querySelector(".buttoncontainer");
+        Picboxcontent.insertBefore(boxcontainer2, mybutton);
+        // console.log(my_spot_img_map);
+        LoadCount++;
+      }
+
+      function FirstGetData() {
+        const apiUrl =
+          "https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment-1";
+        fetch(apiUrl)
+          .then((response) => {
+            return response.json(); // 解析成 JSON 物件
+          })
+          .then((data) => {
+            let image_url = data["data"]["results"][0]["filelist"];
+            let target_string = image_url.match(
+              /https?:\/\/.+?(?=(https?:\/\/)|$)/
+            )[0];
+            // console.log(target_string);
+
+            my_spot_img_map = [];
+            for (itm of data["data"]["results"]) {
+              let image_url = itm["filelist"];
+              let target_string = image_url.match(
+                /https?:\/\/.+?(?=(https?:\/\/)|$)/
+              )[0];
+
+              my_spot_img_map.push([itm["stitle"], target_string]);
+            }
+            // console.log(my_spot_img_map);
+
+            let Bigboxes = document.querySelectorAll(
+              ".BBox1, .BBox2, .BBox3, .BBox4, .BBox5, .BBox6, .BBox7, .BBox8, .BBox9, .BBox10"
+            );
+
+            let Smallboxes = document.querySelectorAll(
+              ".BoxsContainer .SmallBoxs_img img"
+            );
+
+            let sBoxesText = document.querySelectorAll(
+              ".sBox1 p, .sBox2 p, .sBox3 p"
+            );
+
+            for (let i = 0; i < 3; i++) {
+              Smallboxes[i].src = my_spot_img_map[i][1];
+            }
+
+            for (let i = 0; i < 3; i++) {
+              // 創建新的文本節點
+              let newText = document.createTextNode(my_spot_img_map[i][0]);
+              // 選取該 .sBox 元素中的 <p> 元素
+              let paragraph = sBoxesText[i];
+              // 清空 <p> 元素中的原始內容
+              while (paragraph.firstChild) {
+                paragraph.removeChild(paragraph.firstChild);
+              }
+              // 將新的文本節點插入到 <p> 元素中
+              paragraph.appendChild(newText);
+            }
+
+            for (let i = 0; i < 10; i++) {
+              let targetUrl = my_spot_img_map[3 + i][1];
+              Bigboxes[i].style.backgroundImage = `url(${targetUrl})`;
+            }
+
+            let BigBoxTexts = [];
+            Bigboxes.forEach((box) => {
+              let bigBoxText = box.querySelector(".BigBoxtext");
+              if (bigBoxText) {
+                BigBoxTexts.push(bigBoxText);
+              }
+            });
+
+            for (let i = 0; i < 10; i++) {
+              BigBoxTexts[i].textContent = my_spot_img_map[3 + i][0];
+            }
+          })
+          .catch((err) => {
+            console.error("發生錯誤：", err);
+          });
+      }
+      FirstGetData();
+    </script>
+  </body>
+</html>
